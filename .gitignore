@@ -1,0 +1,32 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# dotenv
+.env
+
+# Virtual environments
+venv/
+env/
+*.env/
+.python-version
+
+# IDE files
+.vscode/
+.idea/
+
+# OS junk
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.codekit-cache
+
+# Test files
+*.log
+*.old
+*.txt
