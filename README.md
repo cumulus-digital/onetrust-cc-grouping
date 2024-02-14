@@ -17,7 +17,7 @@ Copy the included `example.env` to `.env` and edit it to include your API key, o
 
 ## Running
 
-A `COMMAND` is required. Help and usage information is available with the `--help` or `-h` flag.
+A [`COMMAND`](#Commands) is required. Help and usage information is available with the `--help` or `-h` flag.
 
 ```
 usage: ot.py [-h [command | all]] [common_options]
@@ -45,7 +45,7 @@ common options:
 
 ### Important Notes on Default Running State
 
-* **All commands which may make changes in OneTrust run in a dry-run state unless you provide a `--commit` flag.** See command usage below for committing commands.
+* **All commands which may make changes in OneTrust run in a *dry-run* state unless you provide a `--commit` flag.** See [command](#Commands) usage below for committing commands.
 
 * Console output is limited to API output (to stdout), warning (to stdout), and error logs (to stderr) unless verbose output is enabled with the `--verbose` or `-v` flags. Verbose output gives some indication of program state as it makes API calls and processes data.
 
@@ -53,12 +53,16 @@ common options:
 
 * API keys should be masked in all output, but be sure to double-check before sharing logs.
 
+---
 
 ## Commands
 
 Commands have specific options. See their expanded help text further down this page, or access their usage help with `./ot.py -h <COMMAND>`
 
+"!" Denotes commands which may make changes at OneTrust. By default, no changes are committed without a `--commit` flag.
+
 *Commands are case-sensitive.*
+
 
 * [`fetchDomains`](#fetchDomains):
 
@@ -68,15 +72,15 @@ Commands have specific options. See their expanded help text further down this p
 
   Fetch domain names assigned to a group UUID. Group must be previously published.
 
-* [`assignDomainsToGroup`](#assignDomainsToGroup):
+* **!** [`assignDomainsToGroup`](#assignDomainsToGroup):
 
   Add domain names to a group UUID. If --remove-existing is not provided, group must be previously published.
 
-* [`removeDomainsFromGroup`](#removeDomainsFromGroup):
+* **!** [`removeDomainsFromGroup`](#removeDomainsFromGroup):
 
   Remove domain names from a group UUID. Group must be previously published.
 
-* [`assignOrgDomainsToGroup`](#assignOrgDomainsToGroup):
+* **!** [`assignOrgDomainsToGroup`](#assignOrgDomainsToGroup):
 
   Assign all domains within an org UUID to a group UUID. All existing domains in the group will be replaced.
 
@@ -88,15 +92,15 @@ Commands have specific options. See their expanded help text further down this p
 
   Retrieve a limited set of `ot.py`-relevant cookie data for a given list of domain names. Note: This does not return raw cookie data from the API. For the raw data, use [`fetchRawDomainCookies`](#fetchRawDomainCookies).
 
-* [`assignDomainCookiesToGroup`](#assignDomainCookiesToGroup):
+* **!** [`assignDomainCookiesToGroup`](#assignDomainCookiesToGroup):
 
   Add a group domain (by UUID) to all cookies from given domain names.
 
-* [`assignOrgDomainCookiesToGroup`](#assignOrgDomainCookiesToGroup):
+* **!** [`assignOrgDomainCookiesToGroup`](#assignOrgDomainCookiesToGroup):
 
   Assign a group domain (by UUID) to all cookies from all domains within an org UUID. Group must exist in org.
 
-* [`completeOrgAssignToGroup`](#completeOrgAssignToGroup):
+* **!** [`completeOrgAssignToGroup`](#completeOrgAssignToGroup):
 
   Runs both [`assignOrgDomainsToGroup`](#assignOrgDomainsToGroup) and [`assignOrgDomainCookiesToGroup`](#assignOrgDomainCookiesToGroup). Assigns all domains in a given org UUID to a group domain UUID, replacing all existing domains, and the group domain to all org domain cookies.
 
@@ -104,10 +108,11 @@ Commands have specific options. See their expanded help text further down this p
 
   Fetch the latest published script for a given domain.
 
-* [`publishDomainScript`](#publishDomainScript):
+* **!** [`publishDomainScript`](#publishDomainScript):
 
   EXPERIMENTAL. Publishes a given domain's scripts. This function is not done automatically as the API has historically been unstable. You may still have to publish manually through the OneTrust web admin.
 
+---
 
 ### `fetchDomains`
 Fetch all domains scanned by OneTrust.
