@@ -15,6 +15,10 @@ Copy the included `example.env` to `.env` and edit it to include your API key, o
 
 `ot.py` will attempt to report missing required libraries at runtime.
 
+## Virtual Environment setup
+
+A Bash script, `venv-setup.sh`, is provided to create a python venv and install required libraries. To be immediately placed in the activated venv, source the script (`. ./venv-setup.sh`) rather than running it directly.
+
 ## Running
 
 A [`COMMAND`](#Commands) is required. Help and usage information is available with the `--help` or `-h` flag.
